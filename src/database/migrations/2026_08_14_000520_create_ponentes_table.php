@@ -9,16 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('asistentes', function (Blueprint $table) {
+        Schema::create('ponentes', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('email');
-            $table->string('telefono');
-            $table->unsignedBigInteger('evento_id');
+            $table->text('biografia')->nullable();
+            $table->string('especialidad')->nullable();
             $table->timestamps();
-            $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
         });
     }
 
@@ -27,6 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asistentes');
+        Schema::dropIfExists('ponentes');
     }
 };
+
