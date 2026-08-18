@@ -1,8 +1,27 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\PonenteController;
+use App\Http\Controllers\AsistenteController;
 
-Route::apiResource('eventos', EventoController::class);
+// Eventos
+Route::get('/eventos', [EventoController::class, 'index']);
+Route::post('/eventos', [EventoController::class, 'store']);
+Route::get('/eventos/{id}', [EventoController::class, 'show']);
+Route::put('/eventos/{id}', [EventoController::class, 'update']);
+Route::delete('/eventos/{id}', [EventoController::class, 'destroy']);
 
+// Ponentes
+Route::get('/ponentes', [PonenteController::class, 'index']);
+Route::post('/ponentes', [PonenteController::class, 'store']);
+Route::get('/ponentes/{id}', [PonenteController::class, 'show']);
+Route::put('/ponentes/{id}', [PonenteController::class, 'update']);
+Route::delete('/ponentes/{id}', [PonenteController::class, 'destroy']);
+
+// Asistentes
+Route::get('/asistentes', [AsistenteController::class, 'index']);
+Route::post('/asistentes', [AsistenteController::class, 'store']);
+Route::get('/asistentes/{id}', [AsistenteController::class, 'show']);
+Route::put('/asistentes/{id}', [AsistenteController::class, 'update']);
+Route::delete('/asistentes/{id}', [AsistenteController::class, 'destroy']);
