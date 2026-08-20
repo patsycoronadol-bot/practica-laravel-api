@@ -20,8 +20,10 @@ Route::put('/ponentes/{id}', [PonenteController::class, 'update']);
 Route::delete('/ponentes/{id}', [PonenteController::class, 'destroy']);
 
 // Asistentes
-Route::get('/asistentes', [AsistenteController::class, 'index']);
-Route::post('/asistentes', [AsistenteController::class, 'store']);
-Route::get('/asistentes/{id}', [AsistenteController::class, 'show']);
-Route::put('/asistentes/{id}', [AsistenteController::class, 'update']);
-Route::delete('/asistentes/{id}', [AsistenteController::class, 'destroy']);
+Route::middleware('auth:api')->group(function () {
+    Route::get('/asistentes', [AsistenteController::class, 'index']);
+    Route::post('/asistentes', [AsistenteController::class, 'store']);
+    Route::get('/asistentes/{id}', [AsistenteController::class, 'show']);
+    Route::put('/asistentes/{id}', [AsistenteController::class, 'update']);
+    Route::delete('/asistentes/{id}', [AsistenteController::class, 'destroy']);
+});
